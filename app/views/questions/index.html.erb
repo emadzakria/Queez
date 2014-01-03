@@ -1,0 +1,27 @@
+<div class="page-header">
+  <h1>All Questions</h1>
+</div>
+
+<%= link_to "Ask New Question", new_question_path, class: "btn btn-success" %>
+
+<% @questions.each do |ques| %>
+  <div class="status">
+    <div class="row">
+    <div class="span1">
+      <%= image_tag ques.user.gravatar_url %>
+    </div>
+    <div class="span7">
+    <strong><%= ques.user.user_name %></strong>
+    <p><%= ques.content %></p>
+    <div class="meta">
+      <%= link_to time_ago_in_words(ques.created_at) + " ago", ques %>
+      <span class="admin">
+      | <%= link_to "Edit", edit_question_path(ques) %> |
+        <%= link_to "delete", ques, method: :delete, data: { confirm: "Are you sure?" }  %>
+      </span>
+    </div>
+   </div>
+   </div>
+  </div>
+
+<% end %>
