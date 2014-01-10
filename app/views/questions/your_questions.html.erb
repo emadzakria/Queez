@@ -1,0 +1,8 @@
+<% @questions.each do |ques| %>
+  <div class="well">
+  	<%= ques.content %>
+  	<hr>
+  	<%= link_to time_ago_in_words(ques.created_at), question_path(ques) %> ago
+  </div>
+<% end %>
+<%= will_paginate %>

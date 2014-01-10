@@ -19,4 +19,8 @@ class User < ActiveRecord::Base
   	"http://gravatar.com/avatar/#{hash}"
   end
 
+  def your_questions(params)
+    questions.paginate(page: params[:page], order: 'created_at DESC', per_page: 21)
+  end
+
 end

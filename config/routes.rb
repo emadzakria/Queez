@@ -13,7 +13,8 @@ Queez::Application.routes.draw do
     get 'logout', to: 'devise/sessions#destroy', as: :logout
   end
 
-  get '/:id', to: 'profiles#show'
+  get 'users/:id', to: 'profiles#show'
+  match '/your_questions', to: 'questions#your_questions'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

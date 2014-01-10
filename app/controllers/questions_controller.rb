@@ -42,7 +42,7 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
-    @question = Question.new(params[:question])
+    @question = current_user.questions.build(params[:question])
 
     respond_to do |format|
       if @question.save
@@ -81,5 +81,9 @@ class QuestionsController < ApplicationController
       format.html { redirect_to questions_url }
       format.json { head :no_content }
     end
+  end
+
+  def your_questions
+    @questions = current_user.your_questions(params)
   end
 end

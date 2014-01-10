@@ -12,18 +12,21 @@
 	<div class="navbar-inner">
 		<div class="container">
 			<a href="/" class="brand">Queez</a>
+			<% if user_signed_in? %>
 			<ul class="nav">
-				<li><%= link_to "ALL Questions", questions_path %></li>
+				<li><%= link_to "Your Q's", your_questions_path %></li>
 			</ul>
 			<ul class="nav pull-right">
-				<% if user_signed_in? %>
                   <li><%= link_to current_user.user_name, edit_user_registration_path %></li>
                   <li><%= link_to "Log Out", logout_path %></li>
+            </ul>
                 <% else %>
-                  <li><%= link_to "Register", register_path %></li>
+
+            <ul class="nav pull-right">
                   <li><%= link_to "Login", login_path %></li>
-				<% end %>
 			</ul>
+			<p class="navbar-text pull-right">Have an account?</p>
+			<% end %>
 		</div>
 	</div>
 </div>
