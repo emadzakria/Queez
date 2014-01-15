@@ -9,8 +9,12 @@ gem 'devise'
 gem 'simple_form'
 gem 'will_paginate'
 
-group :development do
+group :development, :test do
   gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
 end
 
 # Gems used only for assets and not required
