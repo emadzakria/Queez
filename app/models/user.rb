@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :user_name
   # attr_accessible :title, :body
-  validates :user_name, presence: true, length: { in: 2..10 }, #format: { with: /^[a-zA-Z0-9_-]$/, message: 'Must be formatted correctly.' }
+  validates :user_name, presence: true, length: { in: 2..10 } #format: { with: /^[a-zA-Z0-9_-]$/, message: 'Must be formatted correctly.' }
 
   def gravatar_url
   	stripped_email = email.strip
