@@ -4,7 +4,10 @@ Queez::Application.routes.draw do
 
   root :to => 'questions#index'
 
-  resources :questions
+  resources :questions do
+    resources :answers, only: [:create]
+  end
+  
   devise_for :users
 
   devise_scope :user do

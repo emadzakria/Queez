@@ -1,41 +1,53 @@
 <% if user_signed_in? %>
-
-<div class="page-header">
-  <h1>All Questions</h1>
-</div>
-
-<ul class="nav nav-tabs">
-  <li class="active"><a href="#">Recently Added</a></li>
-  <li><a href="#">Hot Questions</a></li>
-  <li><a href="#">Your Favorites</a></li>
-  <li><%= link_to "Ask New Question", new_question_path, class: "btn btn-success" %></li>
-</ul>
-
-<% @questions.each do |ques| %>
-  <div class="status">
-    <div class="row">
-    <div class="span1">
-      <%= image_tag ques.user.gravatar_url %>
-    </div>
-    <div class="span7">
-    <strong><%= ques.user.user_name %></strong>
-    <p><%= link_to truncate(ques.content, length: 51), ques %></p>
-    <div class="meta">
-      <small><%= time_ago_in_words(ques.created_at) + " ago" %></small>
-      <span class="admin">
-      | <%= link_to "Edit", edit_question_path(ques) %> |
-        <%= link_to "delete", ques, method: :delete, data: { confirm: "Are you sure?" }  %>
-      </span>
-    </div>
-   </div>
-   </div>
+  
+  <div class="page-header">
+    <h1>All Questions</h1>
   </div>
-<% end %>
+
+  <div class="row">
+    <div class="span8">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#">Recently Added</a></li>
+        <li><a href="#">Hot Questions</a></li>
+        <li><a href="#">Your Favorites</a></li>
+      </ul>
+      <% @questions.each do |ques| %>
+      <div class="status">
+      <div class="row">
+        <div class="span1">
+          <%= image_tag ques.user.gravatar_url %>
+        </div>
+
+        <div class="span7">
+          <strong><%= ques.user.user_name %></strong>
+          <p><%= link_to truncate(ques.content, length: 51), ques %></p>
+          <div class="meta">
+         <small><%= time_ago_in_words(ques.created_at) + " ago" %></small>
+         |<small> <%= ques.answers.all.count  %> Answers</small>
+
+         </div>
+        </div>
+      </div>
+
+      </div>
+      <% end %>
+
+      
+    </div>
+
+    <div class=span4>
+      <div class="jumbotron">
+      <h1>Have fun!</h1>
+      <%= link_to "Ask Your Freinds", new_question_path, class: "btn btn-success" %>
+      </div>
+  </div>
+
 
 <% else %>
- <div class="face">
-  <h1>Ask Your Freinds & Answer</h1>
-  <%= link_to "Join Now!", register_path, class: "btn btn-success btn-large" %>
+
+  <div class="face">
+    <h1>Ask Your Freinds & Answer</h1>
+    <%= link_to "Join Now!", register_path, class: "btn btn-success btn-large" %>
  </div>
-  
+
 <% end %>

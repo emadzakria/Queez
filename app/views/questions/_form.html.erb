@@ -1,11 +1,8 @@
-<%= simple_form_for(@question, html: { class: "form-horizontal" }) do |f| %>
+
+<%= simple_form_for(@question, html: { class: "form-control" }) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :content %>
-  </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+   <%= f.input :content, :required => false, :autofocus => true, label: 'Your Question' %>
+   <%= f.button :submit, "Ask Now!" %>
 <% end %>

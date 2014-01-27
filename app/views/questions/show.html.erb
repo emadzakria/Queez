@@ -1,15 +1,65 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+	<div class="span8">
+		<div class="ans">
+		<div class="row">
+			
 
-<p>
-  <b>User:</b>
-  <%= @question.user.user_name %>
-</p>
+			<div class="span1">
+				<%= image_tag @question.user.gravatar_url %>
+			</div>
 
-<p>
-  <b>Content:</b>
-  <%= @question.content %>
-</p>
+			<div class="span7">
+				<strong><%= @question.user.user_name %></strong>
+				<p><%= @question.content %></p>
+				
+			</div>
+
+			</div>
+
+		</div>
+
+		        <div class="quesfooter">
+					<small><%= time_ago_in_words(@question.created_at) + " ago" %></small>
+                    |<small> <%= @question.answers.all.count  %> Answers</small>
+				</div>	
+
+		<div class="row">
+			<div class="span8">
+				<h5 class="page-header">ALL Answers</h5>
+                
+            <% @question.answers.each do |ans| %>
+            <div class="ans">
+            <div class="row">
+
+            <div class="span8">
+            <div class="margin">
+            <%= image_tag ans.user.gravatar_url, size: "30x30" %>
+            <strong><%= ans.user.user_name %></strong> | 
+            <small><%= time_ago_in_words(ans.created_at) + " ago" %></small>
+            </div>
+            
+            <p><%= ans.body %></p>
+     		
+
+     		</div>
+
+     		</div>
+	        </div>
+	        <% end %>
 
 
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="span4">
+	  <%= simple_form_for([@question, @answer]) do |f| %>
+	  <%= f.error_notification %>
+      <%= f.input :body, :required => false, :autofocus => true, label: 'Answer this question' %>
+       <%= f.button :submit %>
+	  <% end %>
+	</div>
+
+</div>

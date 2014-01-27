@@ -16,6 +16,10 @@
 	margin: 4px 0;
 }
 
+.status a:hover {
+	text-decoration: none;
+}
+
 .status small {
 	color: #A9A9A9;
 }
@@ -30,4 +34,43 @@
 
 .status.hover .admin {
 	display: inline;
+}
+
+.jumbotron {
+	background-color: #F5F5F5;
+	text-align: center;
+	padding: 10px 0;
+}
+
+.jumbotron h1 {
+	margin-top: 10px;
+}
+
+.jumbotron button {
+	padding-bottom: 10px;
+}
+
+.quesfooter {
+	background-color: #B0C4DE;
+}
+
+.ans {
+	padding: 5px 0;
+	margin-bottom: 10px;
+}
+
+.ans p {
+	margin-top: 5px;
+}
+
+.quesfooter small {
+	padding-left: 2px;
+}
+
+.margin {
+	background-color: #F5F5F5;
+	margin-bottom: 5px;
+}
+.margin img {
+	display:inline;
 }
